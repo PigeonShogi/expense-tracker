@@ -7,7 +7,7 @@ db.on('error', () => {
 })
 
 db.once('open', () => {
-  console.log('MongoDB Connected!')
+  console.log('Report from mongoose.js: MongoDB Connected!')
 })
 
 module.exports = db
