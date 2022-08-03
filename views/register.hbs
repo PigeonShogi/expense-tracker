@@ -2,13 +2,15 @@
   <div class="card" style="width: 38rem;">
     <div class="card-body">
       <h1 class="card-subtitle mb-2 text-muted">註冊新帳號</h1>
+      {{> message}}
       <form action="/users/register" method="post" class="d-flex flex-column mb-3">
         <label for="email">輸入帳號（電郵位址）</label>
-        <input type="email" class="mb-3" id="email" name="email" placeholder="輸入電郵位址">
+        <input type="email" class="mb-3" id="email" name="email" placeholder="輸入電郵位址" value="{{email}}">
         <label for="password">輸入密碼</label>
-        <input type="password" class="mb-3" id="password" name="password" placeholder="輸入密碼">
+        <input type="password" class="mb-3" id="password" name="password" placeholder="輸入密碼" value="{{password}}">
         <label for="confirm-password">確認密碼</label>
-        <input type="password" class="mb-3" id="confirm-password" name="confirm-password" placeholder="再次輸入密碼">
+        <input type="password" class="mb-3" id="confirm-password" name="confirm-password" placeholder="再次輸入密碼"
+          value="{{confirmPassword}}">
         <button class="btn btn-primary">確認送出</button>
       </form>
       <div class="row text-center">

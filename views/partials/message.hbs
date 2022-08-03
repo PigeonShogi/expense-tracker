@@ -1,4 +1,8 @@
+{{#if errors}}
+{{#each errors}}
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
-  <strong>密碼與確認密碼不一致！</strong> 請注意大小寫是否一致。
+  {{this.message}}
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
+{{/each}}
+{{/if}}
