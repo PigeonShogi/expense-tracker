@@ -17,9 +17,13 @@
   <nav class="navbar bg-light">
     <div class="container-fluid">
       <a class="navbar-brand fs-2" href="/">
-        家庭記帳本
+        {{#if isAuthenticated}}{{user.email}}的{{/if}}家庭記帳本
       </a>
-      <a href="users/logout" class="btn btn-outline-primary">登出</a>
+      {{#if isAuthenticated}}
+      <a href="/users/logout" class="btn btn-outline-primary">登出</a>
+      {{else}}
+      <a href="/users/logout" class="btn btn-outline-primary">登入</a>
+      {{/if}}
     </div>
   </nav>
   {{{body}}}
