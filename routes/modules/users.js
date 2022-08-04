@@ -21,7 +21,7 @@ router.post('/register', (req, res) => {
     errors.push({ message: '密碼與確認密碼不一致！請注意大小寫是否一致。' })
   }
   if (errors.length) {
-    console.log('errors ===', errors)
+    // console.log('errors ===', errors)
     return res.render('register', {
       errors,
       email,
