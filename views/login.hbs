@@ -1,10 +1,11 @@
-<div class="container d-flex justify-content-center mt-5">
+<div class="container d-flex justify-content-center my-5">
   <div class="card" style="width: 38rem;">
     <div class="card-body">
       <h1 class="card-subtitle mb-2 text-muted">登入帳號</h1>
+      {{> message}}
       <form action="/users/login" method="post" class="d-flex flex-column mb-3">
         <label for="email">輸入帳號（電郵位址）</label>
-        <input type="email" class="mb-3" id="email" name="email" placeholder="輸入電郵位址">
+        <input type="email" class="mb-3" id="email" name="email" placeholder="輸入電郵位址" value="{{email}}">
         <label for="password">輸入密碼</label>
         <input type="password" class="mb-3" id="password" name="password" placeholder="輸入密碼">
 
