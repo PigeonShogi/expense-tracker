@@ -5,4 +5,8 @@ router.get('/new', (req, res) => {
   res.render('new')
 })
 
+router.post('/new', (req, res) => {
+  res.render('new')
+})
+
 module.exports = router
