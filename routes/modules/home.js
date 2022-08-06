@@ -1,6 +1,7 @@
 const express = require('express') // 載入 Express
 const expense = require('../../models/expense')
 const router = express.Router() // 載入 express.Router()
+const dateConvert = require('../../utils/dateConvert')
 
 
 router.get('/', (req, res) => {
@@ -9,6 +10,14 @@ router.get('/', (req, res) => {
     .lean()
     .sort({ _id: 'asc' })
     .then(expenses => res.render('index', { expenses }))
+    // .then(expenses => {
+    //   console.log('expenses ===', expenses)
+    //   console.log('expenses[0]的type ===', typeof (expenses[0]))
+    //   console.log('expenses[0].value ===', expenses[0].value)
+    //   console.log('expenses[0]', expenses[0].date)
+    //   console.log('date ===', dateConvert(expenses[0]))
+    //   res.render('index', { expenses })
+    // })
     .catch(err => console.error(err))
 })
 

@@ -8,10 +8,10 @@ const expenseSchema = new Schema({
   amount: { type: Number, required: true },
   // 加入關聯設定
   userId: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
+    type: Schema.Types.ObjectId, // 設定參照對象
+    ref: 'User', // 設定參照對象
     index: true,
-    required: false
+    required: true
   },
   // categoryId: Number,
 })
