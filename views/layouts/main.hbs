@@ -22,7 +22,7 @@
       {{#if isAuthenticated}}
       <a href="/users/logout" class="btn btn-outline-primary">登出</a>
       {{else}}
-      <a href="/users/logout" class="btn btn-outline-primary">登入</a>
+      <a href="/users/login" class="btn btn-outline-primary">登入</a>
       {{/if}}
     </div>
   </nav>
@@ -31,7 +31,9 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
     crossorigin="anonymous"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.2.3/jquery.min.js"></script>
+  {{!--
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.2.3/jquery.min.js"></script> --}}
+  {{!-- 上一行不知道為何曾經存在，導致快閃訊息無法關閉。 --}}
 </body>
 
 </html>
