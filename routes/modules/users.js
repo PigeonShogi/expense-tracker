@@ -9,7 +9,6 @@ router.get('/register', (req, res) => {
 })
 
 router.get('/login', (req, res) => {
-  // console.log(res.locals.isAuthenticated)
   res.render('login')
 })
 
