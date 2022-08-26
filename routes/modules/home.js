@@ -11,6 +11,12 @@ router.get('/', (req, res) => {
     .lean()
     .sort({ _id: 'asc' })
     .then(expenses => {
+      // console.log(expenses)
+      const expenses_id = []
+      // console.log(expenses_id)
+      expenses.forEach(element => expenses_id.push(element._id))
+      res.locals.expenses_id = expenses_id
+      // console.log('res.locals.expenses_id ===', res.locals.expenses_id)
       const sum = amountSum(expenses)
       res.render('index', { expenses, sum })
     })
@@ -25,8 +31,22 @@ router.get('/', (req, res) => {
     .catch(err => console.error(err))
 })
 
-router.get('/bootstrap', (req, res) => {
-  res.render('bootstrap')
-})
+// router.post('/', (req, res) => {
+//   const userId = req.user._id // req.user 是在反序列化的時候取出的 user 資訊
+//   const { sort } = req.body
+//   console.log('req.body === ', req.body)
+//   console.log('typeOf(req.body) === ', typeof (req.body))
+//   console.log('req.body.sort === ', sort)
+//   console.log('req.body.sort 鍵值對 === ', req.body.entries())
+//   console.log('req.body === ', req.body === { '”sort”': '交通出行' })
+//   expense.find({ userId })
+//     .lean()
+//     .sort({ _id: 'asc' })
+//     .then(expenses => {
+//       const sum = amountSum(expenses)
+//       res.render('index', { expenses, sum })
+//     })
+//     .catch(err => console.error(err))
+// })
 
 module.exports = router

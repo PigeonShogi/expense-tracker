@@ -19,6 +19,8 @@ const port = process.env.PORT || 3000
 app.engine('hbs', exphbs.engine({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 
+app.use(express.static('public'))
+
 app.use(session({
   secret: 'E-Tracker', // 在正式專案中，這裡應該設定環境變數，避免重要資訊曝光。
   resave: false, // 不在每次互動後強制將 session 更新到 session store 內部。
