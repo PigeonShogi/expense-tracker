@@ -12,11 +12,6 @@ router.get('/', (req, res) => {
     .sort({ _id: 'asc' })
     .then(expenses => {
       const expenses_id = []
-      const date = expenses[0].date
-      // console.log('expenses === ', expenses)
-      console.log('date ===', date)
-      console.log('type of date ===', typeof (date))
-      console.log('date => dateConvert ===', dateConvert(date))
       expenses.forEach(element => {
         expenses_id.push(element._id)
         element.date = dateConvert(element.date)

@@ -29,9 +29,9 @@
     <div class="d-flex flex-row justify-content-between">
       {{!-- 詳細資訊 --}}
       <div class="d-flex flex-row align-items-center div-a-data">
-        <i class="fa-solid fa-utensils"></i>
+        <i class="fa-solid fa-utensils expense-icon"></i>
         <div class="d-flex flex-column">
-          <span>{{this.name}}</span>
+          <span class="expense-name">{{this.name}}</span>
           <span>{{this.date}}</span>
         </div>
         <div class="div-amount">
@@ -39,9 +39,9 @@
         </div>
       </div>
       {{!-- 修改或刪除 --}}
-      <div class="d-flex flex-row align-items-center">
-        <a href="/expenses/{{this._id}}/edit" class="mx-2 crud-btn">修改</a>
-        <a href="/expenses/{{this._id}}/delete" class="mx-2 crud-btn">刪除</a>
+      <div class="d-flex flex-row align-items-center div-expense-a">
+        <a href="/expenses/{{this._id}}/edit" class="mx-2 expense-a">修改</a>
+        <a href="/expenses/{{this._id}}/delete" class="mx-2 expense-a">刪除</a>
       </div>
     </div>
     {{/each}}

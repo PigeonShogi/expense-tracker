@@ -8,6 +8,9 @@
   font-size: 32px;
   font-weight: bold;
   text-align: center;
+  /* 超連結去除底線，套用在 a 標籤  */
+  text-decoration: none;
+
 }
 
 .container-fluid {
@@ -21,12 +24,19 @@
 
 .div-amount {
   text-align: right;
-  width: 200px;
+  width: 150px;
   margin-right: 30px;
 }
 
-.crud-btn {
-  width: 100px;
+.div-expense-a {
+  margin-left: 40px;
+}
+
+.expense-a {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+  width: 40px;
 }
 
 #navbar-btn {
@@ -41,4 +51,15 @@
 
 #btn-new {
   max-width: 180px
+}
+
+.expense-name {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.expense-icon {
+  font-size: 32px;
+  color: rgb(17, 189, 189);
+  margin-right: 15px;
 }
