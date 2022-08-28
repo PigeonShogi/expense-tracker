@@ -2,7 +2,7 @@
 
   <div class="d-flex flex-column">
 
-    <form action="/expense/new" method="post" class="d-flex flex-column mb-3">
+    <form action="/expenses/new" method="post" class="d-flex flex-column mb-3">
       <div class="d-flex flex-row align-items-center mb-3">
         <div style="width: 110px; font-size: 10px"><span>* 必填欄位</span></div>
         <div style="width: 150px;"><span>請輸入你的支出</span></div>
@@ -10,12 +10,14 @@
 
       <div class="d-flex flex-row">
         <div style="width: 60px;"><label for="name">名稱*：</label></div>
-        <input type="text" class="mb-3 mx-3" id="name" name="name" placeholder="輸入支出名稱" value="{{name}}" required="required">
+        <input type="text" class="mb-3 mx-3" id="name" name="name" placeholder="輸入支出名稱" value="{{name}}"
+          required="required">
       </div>
 
       <div class="d-flex flex-row">
         <div style="width: 60px;"><label for="date">日期*：</label></div>
-        <input type="date" class="mb-3 mx-3" style="width: 183px; height: 30px;" id="date" name="date" required="required">
+        <input type="date" class="mb-3 mx-3" style="width: 183px; height: 30px;" id="date" name="date"
+          required="required">
       </div>
 
       <div class="d-flex flex-row">
