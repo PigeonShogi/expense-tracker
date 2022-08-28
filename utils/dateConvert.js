@@ -1,7 +1,10 @@
-const dateConvert = object => {
-  const date = object.date.slice(0, 10)
-  const dateFinal = date.split('-').join('/')
-  return dateFinal
+const dateConvert = date => {
+  const yyyy = date.getFullYear().toString(10)
+  const mm = (date.getMonth() + 1).toString(10).padStart(2, '0')
+  const dd = date.getDate().toString(10).padStart(2, '0')
+  const yyyymmdd = [yyyy, mm, dd]
+  const withSlash = yyyymmdd.join('/')
+  return withSlash
 }
 
 module.exports = dateConvert

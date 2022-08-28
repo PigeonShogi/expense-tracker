@@ -6,13 +6,21 @@ const amountSum = require('../../utils/amountSum')
 
 
 router.get('/', (req, res) => {
-  const userId = req.user._id // req.user 是在反序列化的時候取出的 user 資訊
+  const userId = req.user._id
   expense.find({ userId })
     .lean()
     .sort({ _id: 'asc' })
     .then(expenses => {
       const expenses_id = []
-      expenses.forEach(element => expenses_id.push(element._id))
+      const date = expenses[0].date
+      // console.log('expenses === ', expenses)
+      console.log('date ===', date)
+      console.log('type of date ===', typeof (date))
+      console.log('date => dateConvert ===', dateConvert(date))
+      expenses.forEach(element => {
+        expenses_id.push(element._id)
+        element.date = dateConvert(element.date)
+      })
       res.locals.expenses_id = expenses_id
       const sum = amountSum(expenses)
       res.render('index', { expenses, sum })
