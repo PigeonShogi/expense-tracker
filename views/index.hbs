@@ -4,12 +4,12 @@
     <div class="col">
       <form action="/" method="post">
         <select name=”sort” onchange="submit();" style="width: 300px">
-          <option value=”sort-0”>篩選類別</option>
-          <option value=”sort-1”>家居物業</option>
-          <option value=”sort-2”>交通出行</option>
-          <option value=”sort-3”>休閒娛樂</option>
-          <option value=”sort-4”>餐飲食品</option>
-          <option value=”sort-5”>其他</option>
+          <option value=”0”>篩選類別</option>
+          <option value=”1”>家居物業</option>
+          <option value=”2”>交通出行</option>
+          <option value=”3”>休閒娛樂</option>
+          <option value=”4”>餐飲食品</option>
+          <option value=”5”>其他</option>
         </select>
       </form>
     </div>
@@ -22,13 +22,13 @@
 {{!-- 帳目 --}}
 <div class="container d-flex flex-column mt-4" style="max-width: 28vw;">
   <div class="d-flex flex-column" style="min-width: 28vw;">
-    {{#each expenses}}
+    {{#each records}}
     <div class="d-flex flex-row justify-content-between">
       {{!-- 詳細資訊 --}}
       <div class="d-flex flex-row align-items-center div-a-data-dark" data-index="{{this.serialNumber}}">
-        <i class="fa-solid fa-utensils expense-icon" data-category="{{this.category}}"></i>
+        <i class="fa-solid fa-utensils record-icon" data-category="{{this.categoryId}}"></i>
         <div class="d-flex flex-column">
-          <span class="expense-name">{{this.name}}</span>
+          <span class="record-name">{{this.name}}</span>
           <span>{{this.date}}</span>
         </div>
         <div class="div-amount">
@@ -36,9 +36,9 @@
         </div>
       </div>
       {{!-- 修改或刪除 --}}
-      <div class="div-expense-a">
-        <a href="/expenses/{{this._id}}/edit" class="mx-2 expense-a">修改</a>
-        <form action="/expenses/{{this._id}}/?_method=DELETE" method="POST">
+      <div class="div-record-a">
+        <a href="/records/{{this._id}}/edit" class="mx-2 record-a">修改</a>
+        <form action="/records/{{this._id}}/?_method=DELETE" method="POST">
           <button type="submit" class="as-text">刪除</button>
         </form>
 
@@ -50,5 +50,5 @@
 
 {{!-- 新增支出鈕 --}}
 <div class="row mt-5 justify-content-center">
-  <a href="/expenses/new" class="btn btn-primary" id="btn-new">新增支出</a>
+  <a href="/records/new" class="btn btn-primary" id="btn-new">新增支出</a>
 </div>

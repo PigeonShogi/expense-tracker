@@ -1,29 +1,39 @@
 const express = require('express')
-const expense = require('../../models/expense')
+const Record = require('../../models/record')
 const router = express.Router()
 const dateConvert = require('../../utils/dateConvert')
 const amountSum = require('../../utils/amountSum')
 const { withSlash } = require('../../utils/dateConvert')
 
+router.get('/tester', (req, res) => {
+  res.render('tester')
+})
+
+router.post('/tester', (req, res) => {
+  console.log(req.body)
+  console.log(typeof (req.body.category))
+  res.render('tester')
+})
+
 
 router.get('/', (req, res) => {
   const userId = req.user._id
-  expense.find({ userId })
+  Record.find({ userId })
     .lean()
     .sort({ date: 'asc' })
-    .then(expenses => {
+    .then(records => {
       const mark = '/'
-      const expenses_id = []
-      let expenses_serialNumber = 1
-      expenses.forEach(element => {
-        element.serialNumber = expenses_serialNumber
-        expenses_serialNumber++
-        expenses_id.push(element._id)
+      const records_id = []
+      let records_serialNumber = 1
+      records.forEach(element => {
+        element.serialNumber = records_serialNumber
+        records_serialNumber++
+        records_id.push(element._id)
         element.date = dateConvert(element.date, mark)
       })
-      res.locals.expenses_id = expenses_id
-      const sum = amountSum(expenses)
-      res.render('index', { expenses, sum })
+      res.locals.records_id = records_id
+      const sum = amountSum(records)
+      res.render('index', { records, sum })
     })
     .catch(err => console.error(err))
 })

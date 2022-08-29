@@ -1,21 +1,24 @@
 const express = require('express')
 const router = express.Router()
-const Expense = require('../../models/expense')
-const User = require('../../models/user')
+const Record = require('../../models/record')
+// const User = require('../../models/user')
 const dateConvert = require('../../utils/dateConvert')
 
 
 router.get('/new', (req, res) => {
-  res.render('new')
+  const mark = '-'
+  const date = dateConvert(new Date(), mark)
+  res.render('new', { date })
 })
 
 router.post('/new', (req, res) => {
-  const { name, category, amount, date } = req.body
+  const { name, categoryId, amount, date } = req.body
   const userId = req.user._id
-  return Expense.create({
+  // console.log('############### ===================', name, categoryId, amount, date)
+  return Record.create({
     name,
     date,
-    category,
+    categoryId,
     amount,
     userId
   })
@@ -27,12 +30,12 @@ router.get('/:id/edit', (req, res) => {
   const userId = req.user._id
   const _id = req.params.id
   mark = '-'
-  Expense.findOne({ _id, userId })
+  Record.findOne({ _id, userId })
     .lean()
-    .then(expense => {
-      console.log('expense ===', expense)
-      expense.date = dateConvert(expense.date, mark)
-      res.render('edit', { expense })
+    .then(record => {
+      console.log('record ===', record)
+      record.date = dateConvert(record.date, mark)
+      res.render('edit', { record })
     })
     .catch(err => console.error(err))
 })
@@ -40,10 +43,10 @@ router.get('/:id/edit', (req, res) => {
 router.put('/:id', (req, res) => {
   const userId = req.user._id
   const _id = req.params.id
-  return Expense.findOne({ _id, userId })
-    .then(expense => {
-      expense = Object.assign(expense, req.body)
-      return expense.save()
+  return Record.findOne({ _id, userId })
+    .then(record => {
+      record = Object.assign(record, req.body)
+      return record.save()
     })
     .then(() => res.redirect('/'))
     .catch(err => console.log(err))
@@ -52,10 +55,10 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
   const userId = req.user._id
   const _id = req.params.id
-  return Expense.findOne({ _id, userId })
-    .then(expense => {
-      console.log(expense)
-      expense.remove()
+  return Record.findOne({ _id, userId })
+    .then(record => {
+      console.log(record)
+      record.remove()
     }
     )
     .then(() => res.redirect('/'))

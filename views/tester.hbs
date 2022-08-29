@@ -1,0 +1,25 @@
+<div class="container d-flex flex-row justify-content-center my-5">
+
+  <div class="d-flex flex-column">
+
+    <form action="/tester" method="post" class="d-flex flex-column mb-3">
+      <div class="d-flex flex-row">
+        <div style="width: 60px;"><label for="category">類別*：</label></div>
+        <select class="mb-3 mx-3" style="width: 183px; height: 30px;" id="category" name="category" required="required">
+          {{!-- <option>請選擇類別</option> --}}
+          <option value="1">家居物業</option>
+          <option value="2">交通出行</option>
+          <option value="3">休閒娛樂</option>
+          <option value="4">餐飲食品</option>
+          <option value="5">其他</option>
+        </select>
+      </div>
+
+      <div class="d-flex flex-row">
+        <div style="width: 60px;"><label for="amount">金額*：</label></div>
+        <input type="number" class="mb-3 mx-3" id="amount" name="amount" placeholder="輸入金額" required="required">
+      </div>
+
+      <button class="btn btn-secondary">新增支出</button>
+    </form>
+  </div>
