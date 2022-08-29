@@ -17,9 +17,14 @@
   font-weight: bold;
 }
 
-.div-a-data {
+.div-a-data-light {
+  /* 這裡要調整為單雙行不同底色 */
+  background-color: white;
+}
 
-  background-color: rgb(245, 231, 231);
+.div-a-data-dark {
+  /* 這裡要調整為單雙行不同底色 */
+  background-color: rgb(235, 235, 235);
 }
 
 .div-amount {

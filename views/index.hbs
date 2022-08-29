@@ -28,14 +28,14 @@
     {{#each expenses}}
     <div class="d-flex flex-row justify-content-between">
       {{!-- 詳細資訊 --}}
-      <div class="d-flex flex-row align-items-center div-a-data">
+      <div class="d-flex flex-row align-items-center div-a-data-dark" data-index="{{this.serialNumber}}">
         <i class="fa-solid fa-utensils expense-icon"></i>
         <div class="d-flex flex-column">
           <span class="expense-name">{{this.name}}</span>
           <span>{{this.date}}</span>
         </div>
         <div class="div-amount">
-          <span style="">{{this.amount}}</span>
+          <span>{{this.amount}}</span>
         </div>
       </div>
       {{!-- 修改或刪除 --}}
