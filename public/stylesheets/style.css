@@ -18,13 +18,13 @@
 }
 
 .div-a-data-light {
-  /* 這裡要調整為單雙行不同底色 */
   background-color: white;
+  width: 310px;
 }
 
 .div-a-data-dark {
-  /* 這裡要調整為單雙行不同底色 */
   background-color: rgb(235, 235, 235);
+  width: 310px;
 }
 
 .div-amount {
@@ -34,7 +34,7 @@
 }
 
 .div-expense-a {
-  margin-left: 40px;
+  margin-left: 50px;
 }
 
 .expense-a {
@@ -61,6 +61,7 @@
 .expense-name {
   font-size: 20px;
   font-weight: bold;
+  
 }
 
 .expense-icon {

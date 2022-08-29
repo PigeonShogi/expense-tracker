@@ -22,6 +22,7 @@ app.set('view engine', 'hbs')
 app.use(express.static('public'))
 
 app.use(session({
+  name: 'dadExpense.sid',
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true,

@@ -1,5 +1,5 @@
-const express = require('express') // 載入 Express
-const router = express.Router() // 載入 express.Router()
+const express = require('express')
+const router = express.Router()
 const Expense = require('../../models/expense')
 // const User = require('../../models/user')
 
@@ -9,8 +9,7 @@ router.get('/new', (req, res) => {
 
 router.post('/new', (req, res) => {
   const { name, category, amount } = req.body
-  const date = req.body.date.value
-  console.log(date)
+  const date = req.body.date
   const userId = req.user._id
   Expense.create({
     name,
@@ -28,7 +27,8 @@ router.get('/:id/edit/', (req, res) => {
   Expense.findById(id)
     .lean()
     .then(expense => {
-      console.log(expense.name)
+      console.log('expense.date ===', expense.date)
+      console.log('expense.category ===', expense.category)
       res.render('edit', { expense })
     })
     .catch(err => console.error(err))

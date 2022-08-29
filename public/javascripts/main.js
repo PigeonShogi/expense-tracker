@@ -1,6 +1,7 @@
 const divDark = document.querySelectorAll('.div-a-data-dark')
 const icon = document.querySelectorAll('i')
-
+const select = document.querySelector('select')
+const optionAll = document.querySelectorAll('option')
 
 // 將首頁顯示的每一筆支出之底色調整為：奇數筆底色較深，偶數筆底色較淺。
 divDark.forEach(element => {
@@ -25,5 +26,10 @@ icon.forEach(element => {
     element.classList.remove('fa-utensils')
     element.classList.add('fa-pen')
   }
-
 })
+
+// 設定修改支出頁面的下拉式選單之預設值，使其等於修改前的支出類別。
+if (select.dataset.default === '交通出行') { optionAll[1].setAttribute('selected', 'selected') }
+else if (select.dataset.default === '休閒娛樂') { optionAll[2].setAttribute('selected', 'selected') }
+else if (select.dataset.default === '餐飲食品') { optionAll[3].setAttribute('selected', 'selected') }
+else if (select.dataset.default === '其他') { optionAll[4].setAttribute('selected', 'selected') }
