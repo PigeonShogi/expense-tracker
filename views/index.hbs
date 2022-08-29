@@ -29,7 +29,7 @@
     <div class="d-flex flex-row justify-content-between">
       {{!-- 詳細資訊 --}}
       <div class="d-flex flex-row align-items-center div-a-data-dark" data-index="{{this.serialNumber}}">
-        <i class="fa-solid fa-utensils expense-icon"></i>
+        <i class="fa-solid fa-utensils expense-icon" data-category="{{this.category}}"></i>
         <div class="d-flex flex-column">
           <span class="expense-name">{{this.name}}</span>
           <span>{{this.date}}</span>
@@ -58,10 +58,3 @@
 
 
 
-{{!-- fontawsome
-<i class="fa-solid fa-house-chimney"></i>
-<i class="fa-solid fa-van-shuttle"></i>
-<i class="fa-solid fa-face-grin-beam"></i>
-<i class="fa-solid fa-utensils"></i>
-<i class="fa-solid fa-pen"></i>
---}}
