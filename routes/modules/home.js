@@ -1,8 +1,9 @@
-const express = require('express') 
+const express = require('express')
 const expense = require('../../models/expense')
-const router = express.Router() 
+const router = express.Router()
 const dateConvert = require('../../utils/dateConvert')
 const amountSum = require('../../utils/amountSum')
+const { withSlash } = require('../../utils/dateConvert')
 
 
 router.get('/', (req, res) => {
@@ -11,13 +12,14 @@ router.get('/', (req, res) => {
     .lean()
     .sort({ _id: 'asc' })
     .then(expenses => {
+      const mark = '/'
       const expenses_id = []
       let expenses_serialNumber = 1
       expenses.forEach(element => {
         element.serialNumber = expenses_serialNumber
         expenses_serialNumber++
         expenses_id.push(element._id)
-        element.date = dateConvert(element.date)
+        element.date = dateConvert(element.date, mark)
       })
       res.locals.expenses_id = expenses_id
       const sum = amountSum(expenses)

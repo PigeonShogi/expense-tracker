@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Expense = require('../../models/expense')
+const dateConvert = require('../../utils/dateConvert')
 // const User = require('../../models/user')
 
 router.get('/new', (req, res) => {
@@ -24,11 +25,11 @@ router.post('/new', (req, res) => {
 
 router.get('/:id/edit/', (req, res) => {
   const { id } = req.params
+  mark = '-'
   Expense.findById(id)
     .lean()
     .then(expense => {
-      console.log('expense.date ===', expense.date)
-      console.log('expense.category ===', expense.category)
+      expense.date = dateConvert(expense.date, mark)
       res.render('edit', { expense })
     })
     .catch(err => console.error(err))
