@@ -1,25 +1,11 @@
-const express = require('express') // 載入 Express
-const router = express.Router() // 載入 express.Router()
+const express = require('express')
+const router = express.Router()
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
 const User = require('../../models/user')
 
-router.get('/tester', (req, res) => {
-  res.render('tester')
-})
-
-router.get('/register', (req, res) => {
-  res.render('register')
-})
-
 router.get('/login', (req, res) => {
   res.render('login')
-})
-
-router.get('/logout', (req, res) => {
-  req.logout()
-  req.flash('success_msg', '您已經登出系統')
-  res.redirect('/users/login')
 })
 
 router.post('/login', passport.authenticate('local', {
@@ -27,6 +13,16 @@ router.post('/login', passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/users/login'
 }))
+
+router.get('/logout', (req, res) => {
+  req.logout()
+  req.flash('success_msg', '您已經登出系統')
+  res.redirect('/users/login')
+})
+
+router.get('/register', (req, res) => {
+  res.render('register')
+})
 
 router.post('/register', (req, res) => {
   const { email, password, confirmPassword } = req.body
@@ -54,14 +50,16 @@ router.post('/register', (req, res) => {
         confirmPassword
       })
     }
-
     return bcrypt.genSalt(10)
       .then(salt => bcrypt.hash(password, salt))
       .then(hash => User.create({
         email,
         password: hash
       }))
-      .then(() => res.redirect('login'))
+      .then(() => {
+        req.flash('success_msg', '註冊成功，請輸入帳號密碼以登入系統。')
+        res.redirect('login')
+      })
       .catch(err => console.log(err))
   })
 })

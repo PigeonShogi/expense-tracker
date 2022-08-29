@@ -3,5 +3,6 @@ module.exports = function amountSum(expenses) {
   expenses.forEach(element => {
     sum += element.amount
   })
-  return sum
+  // 回傳的數字以字串顯示，並加上千分位逗號。
+  return sum.toString(10).replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 }

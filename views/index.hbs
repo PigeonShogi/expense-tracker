@@ -32,13 +32,16 @@
           <span>{{this.date}}</span>
         </div>
         <div class="div-amount">
-          <span>{{this.amount}}</span>
+          <span data-info="amount">{{this.amount}}</span>
         </div>
       </div>
       {{!-- 修改或刪除 --}}
-      <div class="d-flex flex-row align-items-center div-expense-a">
+      <div class="div-expense-a">
         <a href="/expenses/{{this._id}}/edit" class="mx-2 expense-a">修改</a>
-        <a href="/expenses/{{this._id}}/delete" class="mx-2 expense-a">刪除</a>
+        <form action="/expenses/{{this._id}}/?_method=DELETE" method="POST">
+          <button type="submit" class="as-text">刪除</button>
+        </form>
+
       </div>
     </div>
     {{/each}}

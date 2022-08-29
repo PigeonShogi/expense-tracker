@@ -34,6 +34,9 @@
 }
 
 .div-expense-a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   margin-left: 50px;
 }
 
@@ -58,14 +61,28 @@
   max-width: 180px
 }
 
+#btn-home {
+  border: 0px;
+}
+
 .expense-name {
   font-size: 20px;
   font-weight: bold;
-  
+
 }
 
 .expense-icon {
   font-size: 32px;
   color: rgb(17, 189, 189);
   margin-right: 15px;
+}
+
+.as-text {
+  font-weight: bold;
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  width: 60px;
 }

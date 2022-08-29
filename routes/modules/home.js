@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
   const userId = req.user._id
   expense.find({ userId })
     .lean()
-    .sort({ _id: 'asc' })
+    .sort({ date: 'asc' })
     .then(expenses => {
       const mark = '/'
       const expenses_id = []
