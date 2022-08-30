@@ -29,6 +29,18 @@
       "date": "2022-08-05",
       "categoryId": 5,
       "amount": 5300
+    },
+    {
+      "name": "無尾熊餅乾",
+      "date": "2022-08-04",
+      "categoryId": 4,
+      "amount": 25
+    },
+    {
+      "name": "吝嗇仙貝",
+      "date": "2022-08-04",
+      "categoryId": 4,
+      "amount": 10
     }
   ]
 }

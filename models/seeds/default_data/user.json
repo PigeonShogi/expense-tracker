@@ -3,12 +3,16 @@
     {
       "name": "廣志",
       "email": "hiroshi@gmail.com",
-      "password": 1
+      "password": "1",
+      "start": 0,
+      "end": 5
     },
     {
       "name": "小新",
       "email": "shinnosuke@gmail.com",
-      "password": 1
+      "password": "1",
+      "start": 5,
+      "end": 7
     }
   ]
 }

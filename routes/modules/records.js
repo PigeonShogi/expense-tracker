@@ -12,9 +12,11 @@ router.get('/new', (req, res) => {
 })
 
 router.post('/new', (req, res) => {
-  const { name, categoryId, amount, date } = req.body
+  const { name,categoryId, amount, date } = req.body
+  // let categoryId = req.body.categoryId
+  // categoryId = Number(categoryId)
+  // console.log('type of categoryId ====', typeof (categoryId))
   const userId = req.user._id
-  // console.log('############### ===================', name, categoryId, amount, date)
   return Record.create({
     name,
     date,
