@@ -3,19 +3,20 @@
   <div class="d-flex flex-column" style="max-width: 28vw;">
     <div class="col">
       <form action="/" method="post">
-        <select name=”sort” onchange="submit();" style="width: 300px">
-          <option value=”0”>篩選類別</option>
-          <option value=”1”>家居物業</option>
-          <option value=”2”>交通出行</option>
-          <option value=”3”>休閒娛樂</option>
-          <option value=”4”>餐飲食品</option>
-          <option value=”5”>其他</option>
+        <select name="sort" onchange="submit();" style="width: 300px">
+          <option value="0">篩選類別</option>
+          <option value="1">家居物業</option>
+          <option value="2">交通出行</option>
+          <option value="3">休閒娛樂</option>
+          <option value="4">餐飲食品</option>
+          <option value="5">其他</option>
+          <option value="">不分類</option>
         </select>
       </form>
     </div>
     <h5 class="mt-3">總金額：</h5>
     <div class="text-end">
-      <h1 id="total">{{sum}}</h1>
+      <h1 id="total">{{totalAmount}}</h1>
     </div>
   </div>
 </div>
@@ -26,7 +27,7 @@
     <div class="d-flex flex-row justify-content-between">
       {{!-- 詳細資訊 --}}
       <div class="d-flex flex-row align-items-center div-a-data-dark" data-index="{{this.serialNumber}}">
-        <i class="fa-solid fa-utensils record-icon" data-category="{{this.categoryId}}"></i>
+        <i class="fa-solid" data-category="{{this.categoryId}}"></i>
         <div class="d-flex flex-column">
           <span class="record-name">{{this.name}}</span>
           <span>{{this.date}}</span>

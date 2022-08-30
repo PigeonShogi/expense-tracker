@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
 const Record = require('../../models/record')
-// const User = require('../../models/user')
 const dateConvert = require('../../utils/dateConvert')
 
 
@@ -13,9 +12,6 @@ router.get('/new', (req, res) => {
 
 router.post('/new', (req, res) => {
   const { name,categoryId, amount, date } = req.body
-  // let categoryId = req.body.categoryId
-  // categoryId = Number(categoryId)
-  // console.log('type of categoryId ====', typeof (categoryId))
   const userId = req.user._id
   return Record.create({
     name,

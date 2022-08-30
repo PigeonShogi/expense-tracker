@@ -14,24 +14,22 @@ divDark.forEach(element => {
 
 // 將預設的圖示保留或抽換成正確圖示
 /*
-家居物業 fa-house-chimney
-交通出行 fa-van-shuttle
-休閒娛樂 fa-face-grin-beam
-餐飲食品 fa-utensils
-其他    fa-utensils
+  家居物業: "fa-solid fa-house-chimney",
+  交通出行: "fa-solid fa-van-shuttle",
+  休閒娛樂: "fa-solid fa-face-grin-beam",
+  餐飲食品: "fa-solid fa-utensils",
+    其他: "fa-solid fa-pen"
 */
 icon.forEach(element => {
   if (element.dataset.category === '1') {
-    element.classList.remove('fa-utensils')
     element.classList.add('fa-house-chimney')
   } else if (element.dataset.category === '2') {
-    element.classList.remove('fa-utensils')
     element.classList.add('fa-van-shuttle')
   } else if (element.dataset.category === '3') {
-    element.classList.remove('fa-utensils')
     element.classList.add('fa-face-grin-beam')
+  } else if (element.dataset.category === '4') {
+    element.classList.add('fa-utensils')
   } else if (element.dataset.category === '5') {
-    element.classList.remove('fa-utensils')
     element.classList.add('fa-pen')
   }
 })

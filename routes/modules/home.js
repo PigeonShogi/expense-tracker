@@ -5,17 +5,6 @@ const dateConvert = require('../../utils/dateConvert')
 const amountSum = require('../../utils/amountSum')
 const { withSlash } = require('../../utils/dateConvert')
 
-router.get('/tester', (req, res) => {
-  res.render('tester')
-})
-
-router.post('/tester', (req, res) => {
-  console.log(req.body)
-  console.log(typeof (req.body.category))
-  res.render('tester')
-})
-
-
 router.get('/', (req, res) => {
   const userId = req.user._id
   Record.find({ userId })
@@ -32,10 +21,35 @@ router.get('/', (req, res) => {
         element.date = dateConvert(element.date, mark)
       })
       res.locals.records_id = records_id
-      const sum = amountSum(records)
-      res.render('index', { records, sum })
+      const totalAmount = amountSum(records)
+      res.render('index', { records, totalAmount })
     })
     .catch(err => console.error(err))
+})
+
+
+router.post('/', (req, res) => {
+  const sort = Number(req.body.sort)
+  if (!sort) { res.redirect('/') }
+  const userId = req.user._id
+  const mark = '/'
+  let records = []
+  return Record.find({ userId })
+    .lean()
+    .then(record => {
+      records = record.filter(element => {
+        return element.categoryId === sort
+      }
+      )
+    })
+    .then(() => {
+      records.forEach(element => {
+        element.date = dateConvert(element.date, mark)
+      })
+      const totalAmount = amountSum(records)
+      res.render('index', { records, totalAmount })
+    })
+    .catch(err => console.log(err))
 })
 
 module.exports = router

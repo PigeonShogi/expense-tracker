@@ -19,3 +19,6 @@ node_modules
 # recycle
 recycle
 .vscode
+
+# Google 第三方認證
+client_secret_650917290053-4krl9liv1qirrr5a2cp91fhfdc72cb0k.apps.googleusercontent.com.json
