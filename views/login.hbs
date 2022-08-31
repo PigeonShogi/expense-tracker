@@ -5,9 +5,10 @@
       {{> message}}
       <form action="/users/login" method="post" class="d-flex flex-column mb-3">
         <label for="email">輸入帳號（電郵位址）</label>
-        <input type="email" class="mb-3" id="email" name="email" placeholder="輸入電郵位址" value="{{email}}">
+        <input type="email" class="mb-3" id="email" name="email" placeholder="輸入電郵位址" required="required"
+          value="{{email}}">
         <label for="password">輸入密碼</label>
-        <input type="password" class="mb-3" id="password" name="password" placeholder="輸入密碼">
+        <input type="password" class="mb-3" id="password" name="password" required="required" placeholder="輸入密碼">
 
         <button class="btn btn-primary">確認送出</button>
         <a href="/auth/google" class="btn btn-secondary a-google">使用 Google 帳號登入</a>

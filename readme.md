@@ -20,7 +20,7 @@
 ```
 4. Set environment variables in .env file according to .env.example
 ```
-  mkdir .env
+  touch .env
 ```
 5. Seed your database
 ```
