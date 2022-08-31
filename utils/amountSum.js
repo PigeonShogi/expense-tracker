@@ -1,6 +1,6 @@
-module.exports = function amountSum(expenses) {
+module.exports = function amountSum(records) {
   let sum = 0
-  expenses.forEach(element => {
+  records.forEach(element => {
     sum += element.amount
   })
   // 回傳的數字以字串顯示，並加上千分位逗號。

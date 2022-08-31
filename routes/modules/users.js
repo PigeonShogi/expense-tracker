@@ -25,7 +25,7 @@ router.get('/register', (req, res) => {
 })
 
 router.post('/register', (req, res) => {
-  const { email, password, confirmPassword } = req.body
+  const { name, email, password, confirmPassword } = req.body
   const errors = []
   if (!email || !password || !confirmPassword) {
     errors.push({ message: '所有欄位都是必填' })
@@ -36,8 +36,10 @@ router.post('/register', (req, res) => {
   if (errors.length) {
     return res.render('register', {
       errors,
+      name,
       email,
       password,
+      confirmPassword
     })
   }
   User.findOne({ email }).then(user => {
@@ -53,6 +55,7 @@ router.post('/register', (req, res) => {
     return bcrypt.genSalt(10)
       .then(salt => bcrypt.hash(password, salt))
       .then(hash => User.create({
+        name,
         email,
         password: hash
       }))

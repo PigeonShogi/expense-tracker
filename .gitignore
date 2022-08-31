@@ -18,6 +18,8 @@ node_modules
 
 # recycle
 recycle
+
+#vscode
 .vscode
 
 # Google 第三方認證

@@ -6,7 +6,7 @@ const methodOverride = require('method-override')
 const routes = require('./routes')
 const session = require('express-session')
 const usePassport = require('./config/passport')
-// const { rawListeners } = require('./models/user')
+
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
@@ -41,9 +41,8 @@ app.use((req, res, next) => {
   res.locals.error_msg = req.flash('error_msg')
   next()
 })
+
 app.use(routes)
-
-
 
 app.listen(port, () => {
   console.log(`app.js is running on http://localhost:${port}`)

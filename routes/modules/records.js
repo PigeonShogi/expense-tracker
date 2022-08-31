@@ -3,7 +3,7 @@ const router = express.Router()
 const Record = require('../../models/record')
 const dateConvert = require('../../utils/dateConvert')
 
-
+// 渲染「新增支出」頁面，並在表格中設定預設日期為今天。
 router.get('/new', (req, res) => {
   const mark = '-'
   const date = dateConvert(new Date(), mark)
@@ -11,7 +11,7 @@ router.get('/new', (req, res) => {
 })
 
 router.post('/new', (req, res) => {
-  const { name,categoryId, amount, date } = req.body
+  const { name, categoryId, amount, date } = req.body
   const userId = req.user._id
   return Record.create({
     name,
@@ -28,10 +28,9 @@ router.get('/:id/edit', (req, res) => {
   const userId = req.user._id
   const _id = req.params.id
   mark = '-'
-  Record.findOne({ _id, userId })
+  return Record.findOne({ _id, userId })
     .lean()
     .then(record => {
-      console.log('record ===', record)
       record.date = dateConvert(record.date, mark)
       res.render('edit', { record })
     })
@@ -54,11 +53,7 @@ router.delete('/:id', (req, res) => {
   const userId = req.user._id
   const _id = req.params.id
   return Record.findOne({ _id, userId })
-    .then(record => {
-      console.log(record)
-      record.remove()
-    }
-    )
+    .then(record => record.remove())
     .then(() => res.redirect('/'))
     .catch(err => console.log(err))
 })

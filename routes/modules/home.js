@@ -26,25 +26,24 @@ router.get('/', (req, res) => {
     .catch(err => console.error(err))
 })
 
-
 router.post('/', (req, res) => {
   const sort = Number(req.body.sort)
   if (!sort) { res.redirect('/') }
   const userId = req.user._id
   const mark = '/'
+  /*
+  以下有兩個名稱相似的變數，在此簡單說明。
+  records：比對過支出類別的支出
+  record：比對前的支出
+  */
   let records = []
   return Record.find({ userId })
     .lean()
     .then(record => {
-      records = record.filter(element => {
-        return element.categoryId === sort
-      }
-      )
+      records = record.filter(element => { return element.categoryId === sort })
     })
     .then(() => {
-      records.forEach(element => {
-        element.date = dateConvert(element.date, mark)
-      })
+      records.forEach(element => { element.date = dateConvert(element.date, mark) })
       const totalAmount = amountSum(records)
       res.render('index', { records, totalAmount })
     })

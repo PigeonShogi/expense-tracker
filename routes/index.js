@@ -5,7 +5,6 @@ const records = require('./modules/records')
 const home = require('./modules/home')
 const users = require('./modules/users')
 const { authenticator } = require('../middleware/auth')
-// const authenticator = require('../middleware/auth').authenticator
 
 router.use('/users', users)
 router.use('/records', authenticator, records)
