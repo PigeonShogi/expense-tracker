@@ -1,3 +1,4 @@
+// 這個檔案執行後可產生 Category、Record、User 共三個資料表。
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
@@ -9,13 +10,13 @@ const User = require('../user')
 const categoryJson = require('./default_data/category.json')
 const recordJson = require('./default_data/record.json')
 const userJson = require('./default_data/user.json')
-
+// 這個函式可產出種子記錄與種子使用者。
 function createSeedData(userArray, userArrayIndex, recordArray) {
   const start = userArray[userArrayIndex].start
   const end = userArray[userArrayIndex].end
   const target = recordArray.slice(start, end)
   db.once('open', () => {
-    console.log('Report from expenseSeeder: Mongodb connected!')
+    console.log('Report from recordSeeder: Mongodb connected!')
     bcrypt
       .genSalt(10)
       .then(salt => bcrypt.hash(userArray[userArrayIndex].password, salt))
@@ -42,14 +43,14 @@ function createSeedData(userArray, userArrayIndex, recordArray) {
           }
         ))
       })
-      .then((done) => console.log('Expense-Tracker Seeder Done!'))
+      .then((done) => console.log('Seed user and seed record have been created!'))
       .catch(err => console.log(err))
   })
 }
-
+// 這個函式可產出種子類別
 function createCategory(categoryArray) {
   db.once('open', () => {
-    console.log('Report from expenseSeeder: Mongodb connected!')
+    console.log('Report from recordSeeder: Mongodb connected!')
     return User.find()
       .then(user => {
         return Promise.all(Array.from(
@@ -61,7 +62,7 @@ function createCategory(categoryArray) {
             })
         ))
       })
-      .then(() => console.log('Expense-Tracker Seeder Done!'))
+      .then(() => console.log('Seed category has been created!'))
       .catch(err => console.log(err))
   })
 }

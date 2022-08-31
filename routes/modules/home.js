@@ -1,9 +1,10 @@
 const express = require('express')
 const Record = require('../../models/record')
 const router = express.Router()
+// dateConvert 函式可將 Date Object 轉換為指定的日期格式
 const dateConvert = require('../../utils/dateConvert')
+// amountSum 函式可計算支出總和
 const amountSum = require('../../utils/amountSum')
-const { withSlash } = require('../../utils/dateConvert')
 
 router.get('/', (req, res) => {
   const userId = req.user._id
@@ -12,15 +13,13 @@ router.get('/', (req, res) => {
     .sort({ date: 'asc' })
     .then(records => {
       const mark = '/'
-      const records_id = []
+      // 賦予每一筆支出 serial number，對應到 index.hbs 的 data-index="{{this.serialNumber}}"。之後用 data-index 與 DOM 控制 CSS。
       let records_serialNumber = 1
       records.forEach(element => {
         element.serialNumber = records_serialNumber
         records_serialNumber++
-        records_id.push(element._id)
         element.date = dateConvert(element.date, mark)
       })
-      res.locals.records_id = records_id
       const totalAmount = amountSum(records)
       res.render('index', { records, totalAmount })
     })
